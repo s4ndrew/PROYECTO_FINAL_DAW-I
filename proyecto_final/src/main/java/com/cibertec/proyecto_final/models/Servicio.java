@@ -1,13 +1,10 @@
 package com.cibertec.proyecto_final.models;
 
-import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.time.LocalDate;
 
-@Entity
 @Getter
 @Setter
 @AllArgsConstructor
