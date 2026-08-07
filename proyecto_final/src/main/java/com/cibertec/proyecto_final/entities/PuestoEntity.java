@@ -5,17 +5,17 @@ import lombok.*;
 
 import java.time.LocalDate;
 
-@Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@Entity
 @Table(name = "puestos")
+@NoArgsConstructor
+@AllArgsConstructor
 public class PuestoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String numero;
     @ManyToOne
