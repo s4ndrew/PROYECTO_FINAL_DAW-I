@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_giro")
+@Table(name = "giros")
 public class GiroEntity {
 
     @Id
