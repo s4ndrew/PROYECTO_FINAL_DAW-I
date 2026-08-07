@@ -1,4 +1,4 @@
 package com.cibertec.proyecto_final.models;
 
-public class A {
+public class Recibo {
 }

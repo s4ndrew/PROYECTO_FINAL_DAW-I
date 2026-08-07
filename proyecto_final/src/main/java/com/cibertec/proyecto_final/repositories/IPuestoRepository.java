@@ -1,4 +1,4 @@
 package com.cibertec.proyecto_final.repositories;
 
-public interface I {
+public interface IPuestoRepository {
 }

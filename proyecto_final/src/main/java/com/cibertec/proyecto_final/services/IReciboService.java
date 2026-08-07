@@ -1,4 +1,4 @@
 package com.cibertec.proyecto_final.services;
 
-public class B {
+public interface IReciboService {
 }
