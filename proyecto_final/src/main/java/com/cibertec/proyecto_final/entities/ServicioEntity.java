@@ -3,6 +3,8 @@ package com.cibertec.proyecto_final.entities;
 import jakarta.persistence.Entity;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Getter
 @Setter
@@ -14,5 +16,7 @@ public class ServicioEntity {
     private String codigo;
     private String nombre;
     private String apellidos;
-    
+    private String accion;
+    private String etapa;
+    private LocalDate fechaNacimiento;
 }
