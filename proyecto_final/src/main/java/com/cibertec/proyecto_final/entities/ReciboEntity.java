@@ -7,22 +7,21 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@Entity
 @Table(
         name = "recibos",
         uniqueConstraints = @UniqueConstraint(columnNames = {"tipo", "correlativo"})
 )
+@NoArgsConstructor
+@AllArgsConstructor
 public class ReciboEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String tipo;
     private Long correlativo;
     private LocalDateTime fecha;
@@ -31,20 +30,18 @@ public class ReciboEntity {
     @ManyToOne
     @JoinColumn(name = "socio_id")
     private SocioEntity socio;
-
     @ManyToOne
     @JoinColumn(name = "puesto_id")
     private PuestoEntity puesto;
-
     @ManyToOne
     @JoinColumn(name = "banco_id")
     private BancoEntity banco;
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "usuario_id", nullable = false)
     private UsuarioEntity usuario;
-
     private String concepto;
     private String categoria;
     private String depositante;
     private LocalDate fechaDeposito;
+
+}
