@@ -1,4 +1,8 @@
 package com.cibertec.proyecto_final.repositories;
 
-public interface IUsuarioRepository {
+import com.cibertec.proyecto_final.entities.UsuarioEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IUsuarioRepository extends JpaRepository<UsuarioEntity, Long> {
+
 }
