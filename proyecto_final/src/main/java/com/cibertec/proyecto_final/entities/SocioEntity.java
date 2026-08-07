@@ -3,6 +3,8 @@ package com.cibertec.proyecto_final.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Getter
 @Setter
@@ -14,10 +16,10 @@ public class SocioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String codigo;
     private String nombre;
-    private String recurrencia;
-    private String moneda;
-    private Double costo;
-    private String destinoCargo;
-    private String tipoCosto;
+    private String apellidos;
+    private String accion;
+    private String etapa;
+    private LocalDate fechaNacimiento;
 }
