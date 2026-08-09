@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 
 @Getter
 @Setter
@@ -24,4 +26,6 @@ public class Servicio {
     private String destinoCargo;
     @NotBlank
     private String tipoCosto;
+    @NotNull
+    private BigDecimal costoUnitario;
 }
