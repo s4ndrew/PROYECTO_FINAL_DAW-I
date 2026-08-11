@@ -5,43 +5,41 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Builder
 @Entity
 @Table(
-        name = "recibos",
+        name = "egresos",
         uniqueConstraints = @UniqueConstraint(columnNames = {"tipo", "correlativo"})
 )
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReciboEntity {
+public class EgresoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String tipo;
     private Long correlativo;
-    private LocalDateTime fecha;
-    private BigDecimal monto;
 
-    @ManyToOne
-    @JoinColumn(name = "socio_id")
-    private SocioEntity socio;
-    @ManyToOne
-    @JoinColumn(name = "puesto_id")
-    private PuestoEntity puesto;
+    private String proveedor;
+    private LocalDate fecha;
+
+    private BigDecimal subtotal;
+    private BigDecimal igv;
+    private BigDecimal total;
+
+    private String motivo;
+    private String categoria;
+
     @ManyToOne
     @JoinColumn(name = "banco_id")
     private BancoEntity banco;
+
     @ManyToOne(optional = false)
     @JoinColumn(name = "usuario_id", nullable = false)
     private UsuarioEntity usuario;
-    private String concepto;
-    private String categoria;
-    private String depositante;
-    private LocalDate fechaDeposito;
-
 }

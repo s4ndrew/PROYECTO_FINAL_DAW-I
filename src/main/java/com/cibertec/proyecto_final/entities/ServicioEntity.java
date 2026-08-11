@@ -1,12 +1,9 @@
 package com.cibertec.proyecto_final.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -14,6 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "servicios")
 public class ServicioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +22,7 @@ public class ServicioEntity {
     private Double costo;
     private String destinoCargo;
     private String tipoCosto;
+
+    // Solo se usa cuando tipoCosto = CONSUMO (RF-17): monto = consumo * costoUnitario.
+    private BigDecimal costoUnitario;
 }
