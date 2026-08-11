@@ -5,19 +5,18 @@ import lombok.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
-@Table(name = "giros")
-public class GiroEntity {
+@Table(name = "bancos")
+
+public class BancoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
-
-    @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
-
-    @Column(name = "descripcion", length = 255)
-    private String descripcion;
+    private String numeroCuenta;
+    private String cci;
+    private String moneda;
 }

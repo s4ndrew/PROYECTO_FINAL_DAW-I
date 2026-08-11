@@ -1,4 +1,9 @@
 package com.cibertec.proyecto_final.repositories;
 
-public interface IGiroRepository {
+import com.cibertec.proyecto_final.entities.GiroEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface IGiroRepository extends JpaRepository<GiroEntity, Long> {
 }
