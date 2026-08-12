@@ -9,8 +9,6 @@ import java.util.List;
 
 @Repository
 public interface IComprobanteEgresoRepository extends JpaRepository<ComprobanteEgresoEntity, Long> {
-
     List<ComprobanteEgresoEntity> findByFechaEmisionBetween(LocalDate fechaInicio, LocalDate fechaFin);
-
     List<ComprobanteEgresoEntity> findByEstado(String estado);
 }

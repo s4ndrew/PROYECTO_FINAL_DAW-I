@@ -40,4 +40,7 @@ public class Servicio {
     @NotBlank(message = "El tipo de costo es obligatorio")
     @Pattern(regexp = "^(FIJO|CONSUMO)$", message = "El tipo de costo debe ser FIJO o CONSUMO")
     private String tipoCosto;
+
+    @Builder.Default()
+    private boolean estado = true;
 }
