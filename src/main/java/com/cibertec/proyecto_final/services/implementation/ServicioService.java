@@ -10,6 +10,7 @@ import tools.jackson.databind.ObjectMapper;
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class ServicioService implements IServicioService {
@@ -34,27 +35,32 @@ public class ServicioService implements IServicioService {
     @Override
     public Servicio guardar(Servicio servicio) {
         ServicioEntity servicioEntity = objectMapper.convertValue(servicio, ServicioEntity.class);
-        return objectMapper.convertValue(iServicioRepository.save(servicioEntity),Servicio.class);
+        return objectMapper.convertValue(iServicioRepository.save(servicioEntity), Servicio.class);
     }
 
     @Override
     public Servicio actualizar(Long id, Servicio servicio) {
         return iServicioRepository.findById(id)
-                .map(e ->{
+                .map(e -> {
                     ServicioEntity servicioUpdate = objectMapper.convertValue(servicio, ServicioEntity.class);
+                    // Sin esto, save() no sabe a qué fila actualizar y termina insertando una nueva.
+                    servicioUpdate.setId(id);
                     return objectMapper.convertValue(iServicioRepository.save(servicioUpdate), Servicio.class);
-                }).orElseThrow();
+                }).orElseThrow(() -> new IllegalArgumentException("El servicio " + id + " no existe"));
     }
 
     @Override
     public void eliminar(Long id) {
+        if (!iServicioRepository.existsById(id)) {
+            throw new IllegalArgumentException("El servicio " + id + " no existe");
+        }
         iServicioRepository.deleteById(id);
     }
 
     @Override
     public List<Servicio> listarActivos() {
-        List<ServicioEntity> servicioEntityList = iServicioRepository.findAll();
-        return servicioEntityList.stream()
+        return iServicioRepository.findAll().stream()
+                .filter(ServicioEntity::isEstado)
                 .map(servicioEntity -> objectMapper.convertValue(servicioEntity, Servicio.class))
                 .toList();
     }
@@ -64,7 +70,7 @@ public class ServicioService implements IServicioService {
         return iServicioRepository.findById(id)
                 .map(e -> {
                     e.setEstado(activo);
-                    return  objectMapper.convertValue(iServicioRepository.save(e), Servicio.class);
-                }).orElseThrow();
+                    return objectMapper.convertValue(iServicioRepository.save(e), Servicio.class);
+                }).orElseThrow(() -> new IllegalArgumentException("El servicio " + id + " no existe"));
     }
 }

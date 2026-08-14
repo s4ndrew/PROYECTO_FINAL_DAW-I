@@ -10,9 +10,14 @@ import java.time.LocalDate;
 @Setter
 @Builder
 @Entity
+// RNF-09: los reportes de egresos (RF-32) filtran por fecha y por categoría seguido.
 @Table(
         name = "egresos",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"tipo", "correlativo"})
+        uniqueConstraints = @UniqueConstraint(columnNames = {"tipo", "correlativo"}),
+        indexes = {
+                @Index(name = "idx_egresos_fecha", columnList = "fecha"),
+                @Index(name = "idx_egresos_categoria", columnList = "categoria")
+        }
 )
 @NoArgsConstructor
 @AllArgsConstructor

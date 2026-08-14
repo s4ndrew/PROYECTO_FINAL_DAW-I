@@ -116,6 +116,13 @@ public class PuestoService implements IPuestoService {
         return true;
     }
 
+    @Override
+    public List<Puesto> buscar(String numero) {
+        return iPuestoRepository.findByNumeroContainingIgnoreCase(numero).stream()
+                .map(this::convertirAModelo)
+                .toList();
+    }
+
     private Puesto convertirAModelo(PuestoEntity entity) {
         return Puesto.builder()
                 .id(entity.getId())

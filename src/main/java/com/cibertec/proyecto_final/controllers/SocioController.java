@@ -5,10 +5,16 @@ import com.cibertec.proyecto_final.services.ISocioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * RNF-02: la consulta del catálogo de socios queda disponible para cualquier
+ * usuario autenticado (el operador de caja necesita buscarlos para cobrar),
+ * pero gestionarlo (crear/editar/eliminar) es tarea exclusiva del Administrador.
+ */
 @RestController
 @RequestMapping("/socios")
 @RequiredArgsConstructor
@@ -30,11 +36,19 @@ public class SocioController {
         return ResponseEntity.ok(socio);
     }
 
+    // RNF-07: búsqueda por código, nombre o apellidos para listas extensas.
+    @GetMapping("/buscar")
+    public ResponseEntity<List<Socio>> buscarSocios(@RequestParam String texto) {
+        return ResponseEntity.ok(iSocioService.buscar(texto));
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Socio> crearSocio(@RequestBody @Valid Socio socio) {
         return ResponseEntity.ok(iSocioService.crearSocio(socio));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<Socio> editarSocio(@PathVariable Long id, @RequestBody @Valid Socio socio) {
         Socio socioActualizado = iSocioService.editarSocio(id, socio);
@@ -44,6 +58,7 @@ public class SocioController {
         return ResponseEntity.ok(socioActualizado);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarSocio(@PathVariable Long id) {
         boolean eliminado = iSocioService.eliminarSocio(id);

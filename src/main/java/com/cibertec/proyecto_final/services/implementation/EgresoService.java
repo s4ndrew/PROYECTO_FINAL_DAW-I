@@ -6,6 +6,7 @@ import com.cibertec.proyecto_final.entities.UsuarioEntity;
 import com.cibertec.proyecto_final.models.Egreso;
 import com.cibertec.proyecto_final.repositories.IEgresoRepository;
 import com.cibertec.proyecto_final.repositories.IUsuarioRepository;
+import com.cibertec.proyecto_final.services.IAuditoriaService;
 import com.cibertec.proyecto_final.services.IEgresoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import tools.jackson.databind.ObjectMapper;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +23,7 @@ public class EgresoService implements IEgresoService {
     private final ObjectMapper objectMapper;
     private final IEgresoRepository egresoRepository;
     private final IUsuarioRepository usuarioRepository;
+    private final IAuditoriaService auditoriaService;
 
     @Override
     public List<Egreso> listarEgresos() {
@@ -33,7 +36,7 @@ public class EgresoService implements IEgresoService {
     @Override
     public Egreso obtenerEgresoPorId(Long id) {
         EgresoEntity entity = egresoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Egreso no encontrado con id: " + id));
+                .orElseThrow(() -> new NoSuchElementException("Egreso no encontrado con id: " + id));
         return convertirAModelo(entity);
     }
 
@@ -41,13 +44,18 @@ public class EgresoService implements IEgresoService {
     public Egreso registrarEgreso(Egreso egreso) {
         EgresoEntity entity = convertirAEntidad(egreso);
         EgresoEntity guardado = egresoRepository.save(entity);
+        // RNF-14: todo egreso registrado queda auditado.
+        if (guardado.getUsuario() != null) {
+            auditoriaService.registrar(guardado.getUsuario().getId(), "Egreso", guardado.getId(), "REGISTRO",
+                    "Egreso de " + guardado.getTotal() + " a " + guardado.getProveedor());
+        }
         return convertirAModelo(guardado);
     }
 
     @Override
     public Egreso actualizarEgreso(Long id, Egreso egreso) {
         egresoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Egreso no encontrado con id: " + id));
+                .orElseThrow(() -> new NoSuchElementException("Egreso no encontrado con id: " + id));
         EgresoEntity entity = convertirAEntidad(egreso);
         entity.setId(id);
         EgresoEntity actualizado = egresoRepository.save(entity);
@@ -55,10 +63,12 @@ public class EgresoService implements IEgresoService {
     }
 
     @Override
-    public void eliminarEgreso(Long id) {
+    public void eliminarEgreso(Long id, Long usuarioId) {
         egresoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Egreso no encontrado con id: " + id));
+                .orElseThrow(() -> new NoSuchElementException("Egreso no encontrado con id: " + id));
         egresoRepository.deleteById(id);
+        // RNF-14: la eliminación de un egreso también debe quedar auditada.
+        auditoriaService.registrar(usuarioId, "Egreso", id, "ANULACION", "Se eliminó el egreso " + id);
     }
 
     @Override
@@ -97,7 +107,7 @@ public class EgresoService implements IEgresoService {
         }
         if (modelo.getUsuarioId() != null) {
             UsuarioEntity usuario = usuarioRepository.findById(modelo.getUsuarioId())
-                    .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+                    .orElseThrow(() -> new NoSuchElementException("Usuario no encontrado"));
             entity.setUsuario(usuario);
         }
         return entity;

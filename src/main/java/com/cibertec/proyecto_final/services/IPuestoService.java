@@ -10,4 +10,5 @@ public interface IPuestoService {
     Puesto crearPuesto(Puesto puesto);
     Puesto editarPuesto(Long id, Puesto puesto);
     boolean eliminarPuesto(Long id);
+    List<Puesto> buscar(String numero);
 }

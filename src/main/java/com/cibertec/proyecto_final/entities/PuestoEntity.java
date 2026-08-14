@@ -9,7 +9,10 @@ import java.time.LocalDate;
 @Setter
 @Builder
 @Entity
-@Table(name = "puestos")
+// RNF-09: índice sobre número de puesto (búsqueda RNF-07 y generación de cuentas por puesto).
+@Table(name = "puestos", indexes = {
+        @Index(name = "idx_puestos_numero", columnList = "numero")
+})
 @NoArgsConstructor
 @AllArgsConstructor
 public class PuestoEntity {

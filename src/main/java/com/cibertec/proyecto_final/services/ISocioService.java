@@ -10,4 +10,5 @@ public interface ISocioService {
     Socio crearSocio(Socio socio);
     Socio editarSocio(Long id, Socio socio);
     boolean eliminarSocio(Long id);
+    List<Socio> buscar(String texto);
 }

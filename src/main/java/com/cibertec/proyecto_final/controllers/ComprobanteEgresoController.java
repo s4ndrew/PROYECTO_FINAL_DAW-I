@@ -41,13 +41,14 @@ public class ComprobanteEgresoController {
         return ResponseEntity.ok(iComprobanteEgresoService.listarComprobantesPorMes(fechaInicio, fechaFin));
     }
 
+    // RNF-14: se pide el usuario que anula/procesa para dejar constancia en la auditoría.
     @PatchMapping("/{id}/anular")
-    public ResponseEntity<ComprobanteEgreso> anularComprobante(@PathVariable Long id) {
-        return ResponseEntity.ok(iComprobanteEgresoService.anularComprobante(id));
+    public ResponseEntity<ComprobanteEgreso> anularComprobante(@PathVariable Long id, @RequestParam Long usuarioId) {
+        return ResponseEntity.ok(iComprobanteEgresoService.anularComprobante(id, usuarioId));
     }
 
     @PatchMapping("/{id}/procesar")
-    public ResponseEntity<ComprobanteEgreso> procesarComprobante(@PathVariable Long id) {
-        return ResponseEntity.ok(iComprobanteEgresoService.procesarComprobante(id));
+    public ResponseEntity<ComprobanteEgreso> procesarComprobante(@PathVariable Long id, @RequestParam Long usuarioId) {
+        return ResponseEntity.ok(iComprobanteEgresoService.procesarComprobante(id, usuarioId));
     }
 }

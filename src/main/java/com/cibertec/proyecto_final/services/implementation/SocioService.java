@@ -53,4 +53,12 @@ public class SocioService implements ISocioService {
         iSocioRepository.deleteById(id);
         return true;
     }
+
+    @Override
+    public List<Socio> buscar(String texto) {
+        return objectMapper.convertValue(
+                iSocioRepository.findByCodigoContainingIgnoreCaseOrNombreContainingIgnoreCaseOrApellidosContainingIgnoreCase(
+                        texto, texto, texto),
+                new TypeReference<List<Socio>>() {});
+    }
 }
