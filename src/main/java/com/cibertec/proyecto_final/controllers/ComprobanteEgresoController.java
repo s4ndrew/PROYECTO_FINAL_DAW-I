@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/comprobantes-egreso")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class ComprobanteEgresoController {
 
     private final IComprobanteEgresoService iComprobanteEgresoService;

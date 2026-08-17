@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/egresos")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class EgresoController {
 
     private final IEgresoService iEgresoService;

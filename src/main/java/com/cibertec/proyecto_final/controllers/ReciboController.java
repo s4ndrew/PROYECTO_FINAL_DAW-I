@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/recibos")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class ReciboController {
 
     private final IReciboService iReciboService;

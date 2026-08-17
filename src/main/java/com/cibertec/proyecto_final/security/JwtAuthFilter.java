@@ -45,13 +45,14 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             if (jwtService.esTokenValido(token)) {
                 String usuario = jwtService.extraerUsuario(token);
                 String rol = jwtService.extraerRol(token);
-                // RNF-02: el rol del token se traduce en una authority "ROLE_x" para
-                // que hasRole()/@PreAuthorize puedan filtrar por rol en cada endpoint.
+                // RNF-02: Se mapea "ADMIN" a "ROLE_ADMIN" para compatibilidad con hasRole()
                 List<GrantedAuthority> authorities = rol != null
                         ? List.of(new SimpleGrantedAuthority("ROLE_" + rol))
                         : Collections.emptyList();
                 var authentication = new UsernamePasswordAuthenticationToken(usuario, null, authorities);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+            } else {
+                SecurityContextHolder.clearContext();
             }
         }
         filterChain.doFilter(request, response);

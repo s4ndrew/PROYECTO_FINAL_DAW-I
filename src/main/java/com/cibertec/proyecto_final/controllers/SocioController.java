@@ -10,14 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * RNF-02: la consulta del catálogo de socios queda disponible para cualquier
- * usuario autenticado (el operador de caja necesita buscarlos para cobrar),
- * pero gestionarlo (crear/editar/eliminar) es tarea exclusiva del Administrador.
- */
 @RestController
 @RequestMapping("/socios")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class SocioController {
 
     private final ISocioService iSocioService;

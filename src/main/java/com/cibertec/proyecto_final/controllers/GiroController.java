@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/giros")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class GiroController {
 
     private final IGiroService iGiroService;

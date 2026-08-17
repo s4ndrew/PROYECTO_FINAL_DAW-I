@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/puestos")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class PuestoController {
 
     private final IPuestoService iPuestoService;

@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @RestController
 @RequestMapping("/reportes")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class ReporteController {
 
     private static final String XLSX_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";

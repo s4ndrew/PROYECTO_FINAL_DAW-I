@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/bancos")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class BancoController {
 
     private final IBancoService iBancoService;

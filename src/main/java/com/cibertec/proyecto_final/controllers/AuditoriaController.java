@@ -14,6 +14,7 @@ import java.util.List;
 @RequestMapping("/auditoria")
 @RequiredArgsConstructor
 @PreAuthorize("hasRole('ADMIN')")
+@CrossOrigin(origins = "*")
 public class AuditoriaController {
 
     private final IAuditoriaService iAuditoriaService;
