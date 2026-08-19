@@ -40,7 +40,6 @@ public class EgresoController {
         return ResponseEntity.ok(iEgresoService.actualizarEgreso(id, egreso));
     }
 
-    // RNF-14: se pide el usuario que elimina para dejar constancia en la auditoría.
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarEgreso(@PathVariable Long id, @RequestParam Long usuarioId) {
         iEgresoService.eliminarEgreso(id, usuarioId);

@@ -17,7 +17,6 @@ import { Columna, FgTable } from '../../shared/ui/table';
 
 type Generador = 'puestos' | 'consumo' | 'socios' | null;
 
-/** RF-16 a RF-21, RN-05, RN-06. */
 @Component({
   selector: 'fg-cuentas-cobrar',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -121,7 +120,7 @@ type Generador = 'puestos' | 'consumo' | 'socios' | null;
       </fg-table>
     </div>
 
-    <!-- RF-16: cargo fijo a un conjunto de puestos -->
+    <!-- Cargo fijo a un conjunto de puestos -->
     @if (generador() === 'puestos') {
       <fg-modal titulo="Generar cuentas por puestos" tamanio="lg" (cerrar)="cerrar()">
         <form [formGroup]="formPuestos" class="fg-form-grid" novalidate>
@@ -158,7 +157,7 @@ type Generador = 'puestos' | 'consumo' | 'socios' | null;
             }
           </div>
           <span class="fg-help-text">
-            Si una cuenta ya existe para ese puesto, servicio y periodo, el backend la omite.
+            Si una cuenta ya existe para ese puesto, servicio y periodo, se omite.
           </span>
         </div>
 
@@ -179,7 +178,7 @@ type Generador = 'puestos' | 'consumo' | 'socios' | null;
       </fg-modal>
     }
 
-    <!-- RF-17 / RN-05: el monto lo calcula el backend con las lecturas -->
+    <!-- El monto se calcula automaticamente con las lecturas -->
     @if (generador() === 'consumo') {
       <fg-modal titulo="Generar cuenta por consumo" (cerrar)="cerrar()">
         <form [formGroup]="formConsumo" class="fg-form-grid" novalidate>
@@ -240,7 +239,7 @@ type Generador = 'puestos' | 'consumo' | 'socios' | null;
       </fg-modal>
     }
 
-    <!-- RF-18 / RN-06 -->
+    <!-- Cuentas para socios -->
     @if (generador() === 'socios') {
       <fg-modal titulo="Generar cuentas para socios" (cerrar)="cerrar()">
         <form [formGroup]="formSocios" class="fg-form-grid" novalidate>
@@ -269,12 +268,12 @@ type Generador = 'puestos' | 'consumo' | 'socios' | null;
                 </label>
               }
             </div>
-            <span class="fg-help-text">Sin seleccion, el backend toma todas las etapas.</span>
+            <span class="fg-help-text">Sin seleccion, se toman todas las etapas.</span>
           </div>
           <div class="fg-field fg-span-2">
             <label class="fg-check">
               <input type="checkbox" formControlName="soloUnicos" />
-              No duplicar por nombre y apellidos (RN-06)
+              No duplicar por nombre y apellidos
             </label>
           </div>
         </form>
@@ -508,7 +507,7 @@ export class CuentasCobrarPage {
           this.cerrar();
           this.toast.success(
             'Cuenta generada',
-            `Monto calculado por el backend: ${cuenta.monto}`
+            `Monto calculado: ${cuenta.monto}`
           );
           this.cargar();
         },

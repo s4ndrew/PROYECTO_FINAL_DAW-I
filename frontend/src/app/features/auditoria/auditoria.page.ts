@@ -8,7 +8,6 @@ import { Columna, FgTable } from '../../shared/ui/table';
 
 const ENTIDADES = ['CuentaCobrar', 'Recibo', 'Egreso', 'ComprobanteEgreso'];
 
-/** RNF-14: quien hizo que y cuando. Solo ADMIN. */
 @Component({
   selector: 'fg-auditoria',
   changeDetection: ChangeDetectionStrategy.OnPush,

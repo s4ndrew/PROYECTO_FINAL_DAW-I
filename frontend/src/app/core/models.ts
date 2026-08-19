@@ -1,11 +1,3 @@
-/**
- * Interfaces espejo de los DTO de `com.cibertec.proyecto_final.models`.
- * Se conservan los nombres del backend (socio, puesto, giro) para que el JSON
- * calce 1 a 1 y no haya traduccion de campos en el medio.
- *
- * Fechas: LocalDate -> 'yyyy-MM-dd', LocalDateTime -> 'yyyy-MM-ddTHH:mm:ss'.
- * BigDecimal / Double -> number.
- */
 
 export type Rol = 'ADMIN' | 'OPERADOR';
 export type EstadoCuenta = 'PENDIENTE' | 'ABONADA' | 'EXONERADA';
@@ -149,8 +141,6 @@ export interface Auditoria {
   detalle?: string | null;
 }
 
-/* ---------- Requests de cobranza y generacion ---------- */
-
 export interface PagoRequest {
   cuentaIds: number[];
   usuarioId: number;
@@ -192,7 +182,6 @@ export interface GenerarSociosRequest {
   soloUnicos: boolean;
 }
 
-/** Formato de error de `GlobalExceptionHandler`. */
 export interface ApiError {
   timestamp: string;
   status: number;

@@ -12,11 +12,6 @@ import { FgPageHeader } from '../../shared/ui/page-header';
 import { FechaHoraPipe, MonedaPipe } from '../../shared/ui/pipes';
 import { Columna, FgTable } from '../../shared/ui/table';
 
-/**
- * RF-21 a RF-23: se eligen cuentas pendientes de un socio o un puesto y el
- * backend las marca ABONADA y emite un unico recibo con correlativo, todo en
- * la misma transaccion (RNF-04, RNF-05).
- */
 @Component({
   selector: 'fg-cobranza',
   changeDetection: ChangeDetectionStrategy.OnPush,

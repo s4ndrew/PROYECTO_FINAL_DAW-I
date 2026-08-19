@@ -5,12 +5,6 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-/**
- * RNF-14: registra quién hizo qué y cuándo en las operaciones sensibles
- * (pagos, canjes, ingresos externos, anulaciones y egresos). No reemplaza
- * el usuarioId que ya guardan Recibo/Egreso: es el log centralizado que
- * permite auditar todas las entidades desde un solo lugar.
- */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -34,13 +28,11 @@ public class AuditoriaEntity {
     @Column(nullable = false)
     private LocalDateTime fecha;
 
-    // Nombre de la entidad afectada: CuentaCobrar, Recibo, Egreso, ComprobanteEgreso, etc.
     @Column(nullable = false, length = 50)
     private String entidad;
 
     private Long entidadId;
 
-    // PAGO, CANJE, INGRESO_EXTERNO, ANULACION, REGISTRO, PROCESADO, etc.
     @Column(nullable = false, length = 30)
     private String accion;
 

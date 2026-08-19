@@ -14,9 +14,6 @@ public class CorrelativoService implements ICorrelativoService {
 
     private final ICorrelativoRepository iCorrelativoRepository;
 
-    // REQUIRES_NEW: esta transacción se confirma (y libera el lock) apenas
-    // termina, sin depender de si el pago que la llamó sigue en curso o falla
-    // después. Así el lock pesimista dura lo mínimo posible.
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Long generarSiguiente(String tipo) {

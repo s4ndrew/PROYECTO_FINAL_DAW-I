@@ -7,7 +7,6 @@ import { Auditoria, Usuario } from '../models';
 
 const API = environment.apiUrl;
 
-/** RF-03: gestion de usuarios, solo ADMIN en el backend. */
 @Injectable({ providedIn: 'root' })
 export class UsuarioApi {
   private readonly http = inject(HttpClient);
@@ -21,7 +20,6 @@ export class UsuarioApi {
   crear(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(`${API}/usuarios`, usuario);
   }
-  /** El password es opcional al editar: si no se manda, conserva el hash actual. */
   editar(id: number, usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(`${API}/usuarios/${id}`, usuario);
   }
@@ -30,7 +28,6 @@ export class UsuarioApi {
   }
 }
 
-/** RNF-14: consulta del log centralizado, solo ADMIN. */
 @Injectable({ providedIn: 'root' })
 export class AuditoriaApi {
   private readonly http = inject(HttpClient);

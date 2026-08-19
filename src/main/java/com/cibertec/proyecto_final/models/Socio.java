@@ -33,7 +33,6 @@ public class Socio {
     @Size(max = 50, message = "La acción no puede superar los 50 caracteres")
     private String accion;
 
-    // RN-06: la generación de cargos para socios filtra por etapas 1, 2 y 3.
     @NotBlank(message = "La etapa es obligatoria")
     @Pattern(regexp = "^[123]$", message = "La etapa debe ser 1, 2 o 3")
     private String etapa;

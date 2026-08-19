@@ -9,7 +9,6 @@ import { FgPageHeader } from '../../shared/ui/page-header';
 import { FechaPipe } from '../../shared/ui/pipes';
 import { Columna, FgTable } from '../../shared/ui/table';
 
-/** Detalle del socio: RF-19 (deuda) y RF-26 (historial de pagos). */
 @Component({
   selector: 'fg-socio-detalle',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -105,7 +104,6 @@ export class SocioDetallePage {
   private readonly cuentaApi = inject(CuentaCobrarApi);
   private readonly reciboApi = inject(ReciboApi);
 
-  /** Viene de la ruta /socios/:id con withComponentInputBinding(). */
   readonly id = input.required<string>();
 
   protected readonly socio = signal<Socio | null>(null);

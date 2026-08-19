@@ -18,7 +18,6 @@ const MESES = [
   'Dic'
 ];
 
-/** S/ 1,250.00 — el backend maneja PEN por defecto. */
 export function formatearMoneda(valor: number | null | undefined, moneda = 'PEN'): string {
   if (valor === null || valor === undefined) {
     return '—';
@@ -30,7 +29,6 @@ export function formatearMoneda(valor: number | null | undefined, moneda = 'PEN'
   }
 }
 
-/** '2026-08-16' -> '16/08/2026'. */
 export function formatearFecha(iso: string | null | undefined): string {
   if (!iso) {
     return '—';
@@ -40,7 +38,6 @@ export function formatearFecha(iso: string | null | undefined): string {
   return dia && mes && anio ? `${dia}/${mes}/${anio}` : iso;
 }
 
-/** '2026-08-16T14:35:00' -> '16 Ago 2026 · 14:35'. */
 export function formatearFechaHora(iso: string | null | undefined): string {
   if (!iso) {
     return '—';
@@ -52,19 +49,16 @@ export function formatearFechaHora(iso: string | null | undefined): string {
   return hhmm ? `${dia} ${etiquetaMes} ${anio} · ${hhmm}` : `${dia} ${etiquetaMes} ${anio}`;
 }
 
-/** Fecha de hoy en el formato que espera @DateTimeFormat(ISO.DATE). */
 export function hoyIso(): string {
   const hoy = new Date();
   return `${hoy.getFullYear()}-${dosDigitos(hoy.getMonth() + 1)}-${dosDigitos(hoy.getDate())}`;
 }
 
-/** Periodo 'yyyy-MM' del mes actual. */
 export function periodoActual(): string {
   const hoy = new Date();
   return `${hoy.getFullYear()}-${dosDigitos(hoy.getMonth() + 1)}`;
 }
 
-/** '2026-08' -> 'Agosto 2026'. */
 export function formatearPeriodo(periodo: string | null | undefined): string {
   if (!periodo) {
     return '—';
@@ -88,7 +82,6 @@ export function formatearPeriodo(periodo: string | null | undefined): string {
   return nombre ? `${nombre} ${anio}` : periodo;
 }
 
-/** Dispara la descarga de un XLSX del backend con el nombre que define el front. */
 export function descargarBlob(blob: Blob, nombreArchivo: string): void {
   const url = URL.createObjectURL(blob);
   const enlace = document.createElement('a');
@@ -100,11 +93,6 @@ export function descargarBlob(blob: Blob, nombreArchivo: string): void {
   URL.revokeObjectURL(url);
 }
 
-/**
- * Traslada los errores de Bean Validation (400 con mapa `errores`) a los
- * controles del formulario, para que el usuario los vea campo por campo.
- * Devuelve true si el error se pudo aplicar.
- */
 export function aplicarErroresServidor(form: FormGroup, error: unknown): boolean {
   if (!(error instanceof HttpErrorResponse) || error.status !== 400) {
     return false;
@@ -125,7 +113,6 @@ export function aplicarErroresServidor(form: FormGroup, error: unknown): boolean
   return aplicado;
 }
 
-/** Primer mensaje de error legible de un control. */
 export function mensajeDeError(errores: Record<string, unknown> | null | undefined): string {
   if (!errores) {
     return '';

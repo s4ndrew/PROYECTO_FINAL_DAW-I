@@ -14,6 +14,5 @@ public interface IUsuarioService {
     Usuario actualizar(Long id, Usuario usuario);
     void eliminar(Long id);
 
-    // RF-01: valida usuario/password (hash BCrypt) y devuelve el token JWT.
     LoginResponse login(LoginRequest request);
 }

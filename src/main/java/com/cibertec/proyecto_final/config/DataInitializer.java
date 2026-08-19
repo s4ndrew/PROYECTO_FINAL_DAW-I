@@ -9,12 +9,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-/**
- * Crea un usuario administrador la primera vez que se levanta la app (si la
- * tabla "usuarios" está vacía). Como ahora TODAS las rutas exigen JWT salvo
- * el login, esto resuelve el problema de "no puedo crear un usuario sin
- * estar logueado, ni loguearme sin un usuario creado". Ver README.
- */
 @Component
 @RequiredArgsConstructor
 public class DataInitializer implements CommandLineRunner {
@@ -38,8 +32,6 @@ public class DataInitializer implements CommandLineRunner {
             iUsuarioRepository.save(admin);
             log.info("Usuario administrador creado -> usuario: admin | password: Admin123!");
 
-            // RNF-02: usuario de prueba para validar las restricciones por rol (operador
-            // de caja no puede gestionar catálogos ni usuarios, ver README).
             UsuarioEntity operador = UsuarioEntity.builder()
                     .usuario("operador")
                     .password(passwordEncoder.encode("Operador123!"))

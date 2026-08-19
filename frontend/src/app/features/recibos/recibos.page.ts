@@ -11,7 +11,6 @@ import { Columna, FgTable } from '../../shared/ui/table';
 
 type ModoLista = 'todos' | 'ingresos' | 'bancarios';
 
-/** RF-26 (historial), RF-29 (ingresos del dia) y RF-31 (bancarios del dia). */
 @Component({
   selector: 'fg-recibos',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,8 +41,8 @@ type ModoLista = 'todos' | 'ingresos' | 'bancarios';
           (change)="cambiarModo($any($event.target).value)"
         >
           <option value="todos">Todos los recibos</option>
-          <option value="ingresos">Ingresos por fecha (RF-29)</option>
-          <option value="bancarios">Bancarios por fecha (RF-31)</option>
+          <option value="ingresos">Ingresos por fecha</option>
+          <option value="bancarios">Bancarios por fecha</option>
         </select>
         @if (modo() !== 'todos') {
           <input
@@ -118,7 +117,7 @@ type ModoLista = 'todos' | 'ingresos' | 'bancarios';
           </div>
         </div>
         <p class="fg-caption" style="margin-top:12px">
-          El backend no guarda el detalle de que cuentas salda cada recibo, solo el monto total.
+          No se guarda el detalle de que cuentas salda cada recibo, solo el monto total.
         </p>
         <div modalFooter>
           <button type="button" class="fg-btn fg-btn--ghost" (click)="detalle.set(null)">

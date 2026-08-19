@@ -9,7 +9,6 @@ import { aplicarErroresServidor } from '../../core/util/formato';
 import { FgField } from '../../shared/ui/field';
 import { FgPageHeader } from '../../shared/ui/page-header';
 
-/** RF-25: dinero que entra sin estar ligado a una cuenta por cobrar. */
 @Component({
   selector: 'fg-ingreso-externo',
   changeDetection: ChangeDetectionStrategy.OnPush,

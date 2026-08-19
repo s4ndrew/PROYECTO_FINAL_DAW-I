@@ -15,7 +15,6 @@ import { Columna, FgTable } from '../../shared/ui/table';
 
 type ModoLista = 'todos' | 'fecha' | 'categoria';
 
-/** RF-27, RF-28, RF-30: salidas de dinero de la administracion. */
 @Component({
   selector: 'fg-egresos',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -274,7 +273,6 @@ export class EgresosPage {
       motivo: valores.motivo,
       categoria: valores.categoria || null,
       bancoId: valores.bancoId,
-      // RNF-14: el backend audita el egreso con el usuario que lo registra.
       usuarioId: this.auth.usuarioId()
     };
     const enEdicion = this.editando();

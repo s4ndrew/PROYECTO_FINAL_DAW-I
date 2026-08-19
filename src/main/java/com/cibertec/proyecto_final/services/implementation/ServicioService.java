@@ -43,7 +43,6 @@ public class ServicioService implements IServicioService {
         return iServicioRepository.findById(id)
                 .map(e -> {
                     ServicioEntity servicioUpdate = objectMapper.convertValue(servicio, ServicioEntity.class);
-                    // Sin esto, save() no sabe a qué fila actualizar y termina insertando una nueva.
                     servicioUpdate.setId(id);
                     return objectMapper.convertValue(iServicioRepository.save(servicioUpdate), Servicio.class);
                 }).orElseThrow(() -> new IllegalArgumentException("El servicio " + id + " no existe"));

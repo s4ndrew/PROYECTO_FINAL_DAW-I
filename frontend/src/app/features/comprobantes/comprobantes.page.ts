@@ -12,7 +12,6 @@ import { FgModal } from '../../shared/ui/modal';
 import { FgPageHeader } from '../../shared/ui/page-header';
 import { Columna, FgTable } from '../../shared/ui/table';
 
-/** RF-28, RF-30: comprobantes de los egresos, con anulacion y procesamiento auditados. */
 @Component({
   selector: 'fg-comprobantes',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -10,7 +10,6 @@ import java.time.LocalDate;
 @Setter
 @Builder
 @Entity
-// RNF-09: los reportes de egresos (RF-32) filtran por fecha y por categoría seguido.
 @Table(
         name = "egresos",
         uniqueConstraints = @UniqueConstraint(columnNames = {"tipo", "correlativo"}),

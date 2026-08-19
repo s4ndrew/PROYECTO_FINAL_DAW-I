@@ -47,7 +47,6 @@ public class ComprobanteEgresoService implements IComprobanteEgresoService {
         ComprobanteEgresoEntity entity = convertirAEntidad(comprobante);
         entity.setEstado("EMITIDO");
         ComprobanteEgresoEntity guardado = comprobanteEgresoRepository.save(entity);
-        // RNF-14: registro de comprobante auditado.
         if (guardado.getUsuario() != null) {
             auditoriaService.registrar(guardado.getUsuario().getId(), "ComprobanteEgreso", guardado.getId(),
                     "REGISTRO", "Comprobante " + guardado.getNumero() + " emitido");
@@ -69,7 +68,6 @@ public class ComprobanteEgresoService implements IComprobanteEgresoService {
                 .orElseThrow(() -> new NoSuchElementException("Comprobante no encontrado con id: " + id));
         entity.setEstado("ANULADO");
         ComprobanteEgresoEntity actualizado = comprobanteEgresoRepository.save(entity);
-        // RNF-14: toda anulación queda auditada.
         auditoriaService.registrar(usuarioId, "ComprobanteEgreso", id, "ANULACION",
                 "Se anuló el comprobante " + entity.getNumero());
         return convertirAModelo(actualizado);
@@ -85,8 +83,6 @@ public class ComprobanteEgresoService implements IComprobanteEgresoService {
                 "Se procesó el comprobante " + entity.getNumero());
         return convertirAModelo(actualizado);
     }
-
-    // --- Métodos privados de conversión ---
 
     private ComprobanteEgreso convertirAModelo(ComprobanteEgresoEntity entity) {
         ComprobanteEgreso modelo = objectMapper.convertValue(entity, ComprobanteEgreso.class);

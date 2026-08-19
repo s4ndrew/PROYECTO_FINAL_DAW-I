@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// RNF-14: consultar "quién hizo qué y cuándo" es una tarea de supervisión, exclusiva del Administrador.
 @RestController
 @RequestMapping("/auditoria")
 @RequiredArgsConstructor

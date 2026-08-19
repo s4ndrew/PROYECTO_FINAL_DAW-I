@@ -18,7 +18,6 @@ public class UsuarioEntity {
     @Column(nullable = false, unique = true, length = 50)
     private String usuario;
 
-    // RF-01: nunca se guarda en texto plano, se cifra con BCryptPasswordEncoder antes del save.
     @Column(nullable = false)
     private String password;
 

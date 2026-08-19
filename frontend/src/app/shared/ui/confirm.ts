@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 
 import { FgModal } from './modal';
 
-/** Confirmacion para acciones importantes (anular, eliminar, procesar un pago). */
 @Component({
   selector: 'fg-confirm',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -24,7 +24,6 @@ export const routes: Routes = [
         loadComponent: () => import('./features/inicio/inicio.page').then((m) => m.InicioPage)
       },
 
-      // Gestion
       {
         path: 'socios',
         title: T('Socios'),
@@ -59,7 +58,6 @@ export const routes: Routes = [
           import('./features/servicios/servicios.page').then((m) => m.ServiciosPage)
       },
 
-      // Caja
       {
         path: 'cuentas-cobrar',
         title: T('Cuentas por cobrar'),
@@ -93,7 +91,6 @@ export const routes: Routes = [
         loadComponent: () => import('./features/bancos/bancos.page').then((m) => m.BancosPage)
       },
 
-      // Administracion
       {
         path: 'egresos',
         title: T('Egresos'),
@@ -111,7 +108,6 @@ export const routes: Routes = [
         loadComponent: () => import('./features/reportes/reportes.page').then((m) => m.ReportesPage)
       },
 
-      // Sistema (solo ADMIN, igual que en el backend)
       {
         path: 'usuarios',
         canMatch: [adminGuard],

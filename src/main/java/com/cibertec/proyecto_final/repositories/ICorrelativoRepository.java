@@ -11,8 +11,6 @@ import java.util.Optional;
 @Repository
 public interface ICorrelativoRepository extends JpaRepository<CorrelativoEntity, String> {
 
-    // RNF-05: bloquea la fila hasta que termine la transacción, así dos pagos
-    // simultáneos no pueden leer el mismo "último número" y repetirlo.
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     Optional<CorrelativoEntity> findById(String tipo);
 }

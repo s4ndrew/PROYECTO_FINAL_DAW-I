@@ -76,7 +76,6 @@ public class CuentaCobrarService implements ICuentaCobrarService {
 
         List<CuentaCobrarEntity> generadas = new ArrayList<>();
         for (Long puestoId : request.getPuestoIds()) {
-            // Evita duplicar la misma cuenta si ya se generó para ese puesto/servicio/periodo.
             if (iCuentaCobrarRepository.existsByServicio_IdAndPuesto_IdAndPeriodo(
                     request.getServicioId(), puestoId, request.getPeriodo())) {
                 continue;
@@ -108,7 +107,6 @@ public class CuentaCobrarService implements ICuentaCobrarService {
         PuestoEntity puesto = iPuestoRepository.findById(request.getPuestoId())
                 .orElseThrow(() -> new IllegalArgumentException("El puesto " + request.getPuestoId() + " no existe"));
 
-        // RN-05: diferencia positiva de lecturas * costo unitario; si no hay consumo positivo, monto = 0.
         BigDecimal consumo = request.getLecturaFinal().subtract(request.getLecturaInicial());
         if (consumo.compareTo(BigDecimal.ZERO) < 0) {
             consumo = BigDecimal.ZERO;
@@ -142,7 +140,6 @@ public class CuentaCobrarService implements ICuentaCobrarService {
                 .toList();
 
         if (request.isSoloUnicos()) {
-            // RN-06: no duplicar por nombre y apellido (misma persona con varios registros de socio).
             Map<String, SocioEntity> unicos = new LinkedHashMap<>();
             for (SocioEntity s : socios) {
                 String clave = (s.getNombre() + "|" + s.getApellidos()).toLowerCase();
@@ -193,14 +190,10 @@ public class CuentaCobrarService implements ICuentaCobrarService {
             throw new IllegalArgumentException("La cuenta " + id + " no existe");
         }
         iCuentaCobrarRepository.deleteById(id);
-        // RNF-14: la anulación de una cuenta por cobrar debe quedar auditada.
         iAuditoriaService.registrar(usuarioId, "CuentaCobrar", id, "ANULACION",
                 "Se anuló la cuenta por cobrar " + id);
     }
 
-    // objectMapper.convertValue no rellena bien socioId/giroId dentro del Puesto anidado
-    // (la entidad trae el Socio/Giro completos, el DTO Puesto solo maneja sus ids), así
-    // que se completa a mano después de la conversión automática.
     private CuentaCobrar convertirAModelo(CuentaCobrarEntity entity) {
         CuentaCobrar cuentaCobrar = objectMapper.convertValue(entity, CuentaCobrar.class);
         if (entity.getPuesto() != null && cuentaCobrar.getPuesto() != null) {

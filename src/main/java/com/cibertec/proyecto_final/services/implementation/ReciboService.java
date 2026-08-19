@@ -96,12 +96,10 @@ public class ReciboService implements IReciboService {
         UsuarioEntity usuario = iUsuarioRepository.findById(request.getUsuarioId())
                 .orElseThrow(() -> new IllegalArgumentException("El usuario " + request.getUsuarioId() + " no existe"));
 
-        // RF-22: el total equivale a la suma de las cuentas seleccionadas.
         BigDecimal total = cuentas.stream()
                 .map(CuentaCobrarEntity::getMonto)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        // RF-21 / RF-23: se marcan como abonadas al procesar el pago (RNF-04: misma transacción que el recibo).
         for (CuentaCobrarEntity cuenta : cuentas) {
             cuenta.setEstado("ABONADA");
         }
@@ -123,7 +121,6 @@ public class ReciboService implements IReciboService {
                 .build();
 
         ReciboEntity guardado = iReciboRepository.save(recibo);
-        // RNF-14: deja constancia de quién procesó el pago y sobre qué cuentas.
         iAuditoriaService.registrar(usuario.getId(), "Recibo", guardado.getId(), "PAGO",
                 "Pago de " + total + " sobre las cuentas " + request.getCuentaIds());
         return convertirAModelo(guardado);
@@ -160,7 +157,6 @@ public class ReciboService implements IReciboService {
                 .build();
 
         ReciboEntity guardado = iReciboRepository.save(recibo);
-        // RNF-14: el canje bancario mueve una cuenta de socio, queda constancia de quién y cuándo.
         iAuditoriaService.registrar(usuario.getId(), "Recibo", guardado.getId(), "CANJE",
                 "Canje bancario de la cuenta " + cuenta.getId() + " al banco " + banco.getId());
         return convertirAModelo(guardado);
@@ -190,8 +186,6 @@ public class ReciboService implements IReciboService {
         return convertirAModelo(guardado);
     }
 
-    // Igual que en CuentaCobrarService: el Puesto anidado necesita que se le
-    // completen socioId/giroId a mano después de la conversión automática.
     private Recibo convertirAModelo(ReciboEntity entity) {
         Recibo recibo = objectMapper.convertValue(entity, Recibo.class);
         if (entity.getPuesto() != null && recibo.getPuesto() != null) {

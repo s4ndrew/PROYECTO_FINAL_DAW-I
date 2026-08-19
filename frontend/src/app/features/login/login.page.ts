@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../core/auth/auth.service';
 import { FgField } from '../../shared/ui/field';
 
-/** RF-01 / RF-02: unica pantalla publica; el resto exige Bearer token. */
 @Component({
   selector: 'fg-login',
   changeDetection: ChangeDetectionStrategy.OnPush,

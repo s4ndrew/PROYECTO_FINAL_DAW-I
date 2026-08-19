@@ -7,7 +7,6 @@ import lombok.*;
 
 import java.util.List;
 
-// RF-16: generar cuentas por cobrar de un servicio de costo FIJO para una lista de puestos.
 @Getter
 @Setter
 @NoArgsConstructor

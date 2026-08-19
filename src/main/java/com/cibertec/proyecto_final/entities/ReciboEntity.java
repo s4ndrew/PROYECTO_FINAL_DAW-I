@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @Setter
 @Builder
 @Entity
-// RNF-09: los reportes/listados (RF-29, RF-31, RF-32) filtran por tipo + fecha constantemente.
 @Table(
         name = "recibos",
         uniqueConstraints = @UniqueConstraint(columnNames = {"tipo", "correlativo"}),

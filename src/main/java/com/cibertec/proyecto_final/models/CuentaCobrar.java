@@ -19,7 +19,6 @@ public class CuentaCobrar {
     @NotNull(message = "El servicio es obligatorio")
     private Servicio servicio;
 
-    // Uno de los dos debe venir (socio o puesto), según destinoCargo del servicio
     private Socio socio;
 
     private Puesto puesto;

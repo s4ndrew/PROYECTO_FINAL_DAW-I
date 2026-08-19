@@ -7,7 +7,6 @@ import { ComprobanteEgreso, Egreso } from '../models';
 
 const API = environment.apiUrl;
 
-/** RF-27, RF-28, RF-30. */
 @Injectable({ providedIn: 'root' })
 export class EgresoApi {
   private readonly http = inject(HttpClient);
@@ -32,13 +31,11 @@ export class EgresoApi {
   actualizar(id: number, egreso: Egreso): Observable<Egreso> {
     return this.http.put<Egreso>(`${API}/egresos/${id}`, egreso);
   }
-  /** RNF-14: el backend exige el usuario que elimina. */
   eliminar(id: number, usuarioId: number): Observable<void> {
     return this.http.delete<void>(`${API}/egresos/${id}`, { params: { usuarioId } });
   }
 }
 
-/** RF-28, RF-30. */
 @Injectable({ providedIn: 'root' })
 export class ComprobanteEgresoApi {
   private readonly http = inject(HttpClient);
@@ -69,11 +66,6 @@ export class ComprobanteEgresoApi {
   }
 }
 
-/**
- * RF-32 y RF-33: todos devuelven un XLSX binario.
- * El nombre del archivo lo arma el front porque Content-Disposition no esta
- * declarado en exposedHeaders de la configuracion CORS del backend.
- */
 @Injectable({ providedIn: 'root' })
 export class ReporteApi {
   private readonly http = inject(HttpClient);

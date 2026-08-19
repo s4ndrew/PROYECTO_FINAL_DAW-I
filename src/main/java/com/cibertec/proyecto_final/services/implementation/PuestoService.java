@@ -13,14 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * A diferencia de Socio/Giro/Banco, acá NO usamos objectMapper.convertValue
- * directo entre PuestoEntity y Puesto. La razón: PuestoEntity guarda las
- * relaciones como objetos completos (SocioEntity, GiroEntity), mientras que
- * el modelo Puesto solo expone sus ids (socioId, giroId), tal como los
- * manda el frontend desde un <select>. Como los nombres/tipos de esos
- * campos no calzan, hay que armar la conversión a mano en los dos sentidos.
- */
 @Service
 @RequiredArgsConstructor
 public class PuestoService implements IPuestoService {
@@ -48,7 +40,6 @@ public class PuestoService implements IPuestoService {
     public Puesto crearPuesto(Puesto puesto) {
         GiroEntity giroEntity = iGiroRepository.findById(puesto.getGiroId()).orElse(null);
         if (giroEntity == null) {
-            // El giro es obligatorio (RF-10): si no existe, no se puede crear el puesto.
             return null;
         }
 
@@ -56,7 +47,6 @@ public class PuestoService implements IPuestoService {
         if (puesto.getSocioId() != null) {
             socioEntity = iSocioRepository.findById(puesto.getSocioId()).orElse(null);
             if (socioEntity == null) {
-                // Mandaron un socioId que no existe.
                 return null;
             }
         }

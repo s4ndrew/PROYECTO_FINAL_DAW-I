@@ -7,10 +7,6 @@ import { ToastService } from '../../core/ui/toast.service';
 import { descargarBlob, hoyIso } from '../../core/util/formato';
 import { FgPageHeader } from '../../shared/ui/page-header';
 
-/**
- * RF-32 y RF-33. Todos los endpoints devuelven XLSX binario; el nombre del
- * archivo lo arma el front porque Content-Disposition no esta expuesto por CORS.
- */
 @Component({
   selector: 'fg-reportes',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,7 +20,7 @@ import { FgPageHeader } from '../../shared/ui/page-header';
     <div class="rejilla">
       <article class="fg-card fg-card__body">
         <h3>Recibos del dia</h3>
-        <p class="fg-caption">Ingresos registrados en una fecha (RF-32).</p>
+        <p class="fg-caption">Ingresos registrados en una fecha.</p>
         <input class="fg-input" type="date" [(ngModel)]="fechaDiario" />
         <button
           type="button"
@@ -38,7 +34,7 @@ import { FgPageHeader } from '../../shared/ui/page-header';
 
       <article class="fg-card fg-card__body">
         <h3>Recibos del mes</h3>
-        <p class="fg-caption">Ingresos y bancarios de un mes completo (RF-32).</p>
+        <p class="fg-caption">Ingresos y bancarios de un mes completo.</p>
         <input class="fg-input" type="month" [(ngModel)]="mesRecibos" />
         <button
           type="button"
@@ -52,7 +48,7 @@ import { FgPageHeader } from '../../shared/ui/page-header';
 
       <article class="fg-card fg-card__body">
         <h3>Egresos por fecha</h3>
-        <p class="fg-caption">Rango de fechas de egresos (RF-32).</p>
+        <p class="fg-caption">Rango de fechas de egresos.</p>
         <div class="fg-row">
           <input class="fg-input" type="date" [(ngModel)]="egresoInicio" />
           <input class="fg-input" type="date" [(ngModel)]="egresoFin" />
@@ -75,7 +71,7 @@ import { FgPageHeader } from '../../shared/ui/page-header';
 
       <article class="fg-card fg-card__body">
         <h3>Egresos por categoria</h3>
-        <p class="fg-caption">Egresos de una categoria exacta (RF-32).</p>
+        <p class="fg-caption">Egresos de una categoria exacta.</p>
         <input class="fg-input" placeholder="Categoria" [(ngModel)]="categoria" />
         <button
           type="button"
@@ -95,7 +91,7 @@ import { FgPageHeader } from '../../shared/ui/page-header';
 
       <article class="fg-card fg-card__body">
         <h3>Socios</h3>
-        <p class="fg-caption">Listado completo del catalogo de socios (RF-33).</p>
+        <p class="fg-caption">Listado completo del catalogo de socios.</p>
         <button
           type="button"
           class="fg-btn fg-btn--secondary"
@@ -108,7 +104,7 @@ import { FgPageHeader } from '../../shared/ui/page-header';
 
       <article class="fg-card fg-card__body">
         <h3>No socios</h3>
-        <p class="fg-caption">Ingresos externos, no ligados a un socio (RF-33).</p>
+        <p class="fg-caption">Ingresos externos, no ligados a un socio.</p>
         <button
           type="button"
           class="fg-btn fg-btn--secondary"
@@ -121,7 +117,7 @@ import { FgPageHeader } from '../../shared/ui/page-header';
 
       <article class="fg-card fg-card__body">
         <h3>Bancos</h3>
-        <p class="fg-caption">Listado completo de cuentas bancarias (RF-33).</p>
+        <p class="fg-caption">Listado completo de cuentas bancarias.</p>
         <button
           type="button"
           class="fg-btn fg-btn--secondary"

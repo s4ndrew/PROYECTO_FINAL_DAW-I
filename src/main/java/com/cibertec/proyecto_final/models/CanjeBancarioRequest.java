@@ -5,7 +5,6 @@ import lombok.*;
 
 import java.time.LocalDate;
 
-// RF-24: canjear (depositar) una cuenta por cobrar de un socio en un banco.
 @Getter
 @Setter
 @NoArgsConstructor

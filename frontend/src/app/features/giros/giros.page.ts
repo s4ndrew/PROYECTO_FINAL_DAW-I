@@ -12,7 +12,6 @@ import { FgModal } from '../../shared/ui/modal';
 import { FgPageHeader } from '../../shared/ui/page-header';
 import { Columna, FgTable } from '../../shared/ui/table';
 
-/** RF-11, RF-12: catalogo de giros comerciales. Escritura solo ADMIN. */
 @Component({
   selector: 'fg-giros',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -83,7 +82,7 @@ import { Columna, FgTable } from '../../shared/ui/table';
       <fg-confirm
         titulo="Eliminar giro"
         [mensaje]="'Se eliminara el giro ' + giro.nombre + '.'"
-        nota="Si hay puestos usando este giro, el backend rechazara la operacion."
+        nota="Si hay puestos usando este giro, no se podra eliminar."
         textoConfirmar="Eliminar"
         [peligroso]="true"
         (cancelar)="porEliminar.set(null)"

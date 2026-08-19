@@ -13,7 +13,6 @@ import { FgField } from '../../shared/ui/field';
 import { FgPageHeader } from '../../shared/ui/page-header';
 import { MonedaPipe } from '../../shared/ui/pipes';
 
-/** RF-24: el backend solo acepta canjes sobre cuentas que pertenecen a un socio. */
 @Component({
   selector: 'fg-canje',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,7 +27,7 @@ import { MonedaPipe } from '../../shared/ui/pipes';
 
     <div class="fg-card fg-card__body" style="max-width:720px">
       <div class="fg-alert fg-alert--info" style="margin-bottom:16px">
-        Solo aparecen cuentas pendientes que pertenecen a un socio: el backend rechaza el canje de
+        Solo aparecen cuentas pendientes que pertenecen a un socio: no se permite el canje de
         cuentas de puesto.
       </div>
 

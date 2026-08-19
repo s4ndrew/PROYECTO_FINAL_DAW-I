@@ -28,7 +28,6 @@ export class ToastService {
     this.mostrar('warning', titulo, detalle, 6000);
   }
 
-  /** Los errores no se autocierran: el usuario los descarta. */
   error(titulo: string, detalle?: string): void {
     this.mostrar('error', titulo, detalle);
   }

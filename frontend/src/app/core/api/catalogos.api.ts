@@ -7,7 +7,6 @@ import { Banco, Giro, Puesto, Servicio, Socio } from '../models';
 
 const API = environment.apiUrl;
 
-/** RF-05 a RF-07 + RNF-07 (busqueda en listas extensas). */
 @Injectable({ providedIn: 'root' })
 export class SocioApi {
   private readonly http = inject(HttpClient);
@@ -32,7 +31,6 @@ export class SocioApi {
   }
 }
 
-/** RF-11, RF-12. */
 @Injectable({ providedIn: 'root' })
 export class GiroApi {
   private readonly http = inject(HttpClient);
@@ -54,7 +52,6 @@ export class GiroApi {
   }
 }
 
-/** RF-08 a RF-10 + RNF-07. */
 @Injectable({ providedIn: 'root' })
 export class PuestoApi {
   private readonly http = inject(HttpClient);
@@ -79,7 +76,6 @@ export class PuestoApi {
   }
 }
 
-/** RF-12. */
 @Injectable({ providedIn: 'root' })
 export class BancoApi {
   private readonly http = inject(HttpClient);
@@ -101,7 +97,6 @@ export class BancoApi {
   }
 }
 
-/** RF-13 a RF-15. */
 @Injectable({ providedIn: 'root' })
 export class ServicioApi {
   private readonly http = inject(HttpClient);

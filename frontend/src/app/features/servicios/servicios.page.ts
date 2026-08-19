@@ -12,10 +12,6 @@ import { FgModal } from '../../shared/ui/modal';
 import { FgPageHeader } from '../../shared/ui/page-header';
 import { Columna, FgTable } from '../../shared/ui/table';
 
-/**
- * RF-13 a RF-15. tipoCosto FIJO usa `costo`; CONSUMO usa `costoUnitario`
- * (el backend igual exige `costo` mayor a 0 en ambos casos).
- */
 @Component({
   selector: 'fg-servicios',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -159,7 +155,7 @@ import { Columna, FgTable } from '../../shared/ui/table';
       <fg-confirm
         titulo="Eliminar servicio"
         [mensaje]="'Se eliminara ' + servicio.nombre + '.'"
-        nota="Si ya genero cuentas por cobrar, el backend rechazara la operacion."
+        nota="Si ya genero cuentas por cobrar, no se podra eliminar."
         textoConfirmar="Eliminar"
         [peligroso]="true"
         (cancelar)="porEliminar.set(null)"

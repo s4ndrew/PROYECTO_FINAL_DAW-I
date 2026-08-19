@@ -9,6 +9,5 @@ import java.util.Optional;
 @Repository
 public interface IUsuarioRepository extends JpaRepository<UsuarioEntity, Long> {
 
-    // RF-01: buscar por el nombre de usuario para el login.
     Optional<UsuarioEntity> findByUsuario(String usuario);
 }

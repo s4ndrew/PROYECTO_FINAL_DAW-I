@@ -32,14 +32,12 @@ export class AuthService {
     return s ? `${s.nombres} ${s.apellidos}`.trim() : '';
   });
 
-  /** RF-01 / RF-02: unica ruta publica del backend. */
   login(request: LoginRequest): Observable<LoginResponse> {
     return this.http
       .post<LoginResponse>(`${environment.apiUrl}/usuarios/login`, request)
       .pipe(tap((respuesta) => this.guardarSesion(respuesta)));
   }
 
-  /** RF-04: el JWT es stateless, cerrar sesion es borrar el token. */
   logout(redirigir = true): void {
     localStorage.removeItem(STORAGE_KEY);
     this.sesionSignal.set(null);
@@ -52,11 +50,6 @@ export class AuthService {
     return this.sesionSignal()?.token ?? null;
   }
 
-  /**
-   * El backend responde 403 (no 401) cuando el token falta o ya vencio, porque
-   * no hay AuthenticationEntryPoint configurado en WebSecurityConfig. Para
-   * distinguir "sesion vencida" de "sin permisos" se revisa el claim exp.
-   */
   tokenVencido(): boolean {
     const token = this.token();
     if (!token) {
@@ -66,10 +59,6 @@ export class AuthService {
     return exp === null ? false : exp * 1000 <= Date.now();
   }
 
-  /**
-   * El principal del backend es solo el username, asi que las operaciones
-   * auditadas (pagos, canjes, anulaciones) necesitan el id explicito.
-   */
   usuarioId(): number {
     const id = this.sesionSignal()?.id;
     if (id === undefined) {
@@ -92,7 +81,6 @@ export class AuthService {
   }
 }
 
-/** Lee el claim `exp` del JWT sin librerias externas. */
 function leerExpiracion(token: string): number | null {
   try {
     const carga = token.split('.')[1];

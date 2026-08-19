@@ -2,11 +2,6 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 
 export type TonoChip = 'success' | 'warning' | 'danger' | 'info' | 'neutral';
 
-/**
- * Muestra los estados tal como los devuelve el backend
- * (PENDIENTE / ABONADA / EXONERADA, INGRESO / BANCO / EGRESO, etc.).
- * Siempre con texto: el color nunca es la unica senal.
- */
 @Component({
   selector: 'fg-chip',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,7 +9,6 @@ export type TonoChip = 'success' | 'warning' | 'danger' | 'info' | 'neutral';
 })
 export class FgChip {
   readonly valor = input<string | boolean | null | undefined>(null);
-  /** Permite forzar el tono cuando el valor no es un estado conocido. */
   readonly tonoManual = input<TonoChip | null>(null);
 
   readonly etiqueta = computed(() => {

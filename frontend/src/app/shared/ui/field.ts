@@ -3,10 +3,6 @@ import { AbstractControl } from '@angular/forms';
 
 import { mensajeDeError } from '../../core/util/formato';
 
-/**
- * Envoltura de campo: label + control proyectado + mensaje de error.
- * Los mensajes replican las validaciones de Bean Validation del backend.
- */
 @Component({
   selector: 'fg-field',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -14,7 +14,6 @@ import { FgModal } from '../../shared/ui/modal';
 import { FgPageHeader } from '../../shared/ui/page-header';
 import { Columna, FgTable } from '../../shared/ui/table';
 
-/** RF-05 a RF-07. Escritura solo ADMIN (RNF-02); busqueda RNF-07. */
 @Component({
   selector: 'fg-socios',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -133,7 +132,7 @@ import { Columna, FgTable } from '../../shared/ui/table';
       <fg-confirm
         titulo="Eliminar socio"
         [mensaje]="'Se eliminara a ' + socio.nombre + ' ' + socio.apellidos + '.'"
-        nota="Si el socio tiene puestos o cuentas asociadas, el backend rechazara la operacion."
+        nota="Si el socio tiene puestos o cuentas asociadas, no se podra eliminar."
         textoConfirmar="Eliminar"
         [peligroso]="true"
         (cancelar)="porEliminar.set(null)"

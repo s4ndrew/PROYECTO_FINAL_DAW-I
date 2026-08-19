@@ -12,7 +12,6 @@ public interface IServicioService {
     Servicio actualizar(Long id, Servicio servicio);
     void eliminar(Long id);
 
-    //Metodos solicitados
     List<Servicio> listarActivos();
     Servicio cambiarEstado(Long id, Boolean activo);
 }

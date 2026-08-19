@@ -12,10 +12,6 @@ import { FgModal } from '../../shared/ui/modal';
 import { FgPageHeader } from '../../shared/ui/page-header';
 import { Columna, FgTable } from '../../shared/ui/table';
 
-/**
- * RF-12: cuentas bancarias de la administracion, usadas en el canje bancario.
- * El backend valida numero de cuenta de 6 a 20 digitos, CCI de 20 digitos y moneda PEN.
- */
 @Component({
   selector: 'fg-bancos',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -65,7 +61,7 @@ import { Columna, FgTable } from '../../shared/ui/table';
             label="Moneda"
             [control]="form.controls.moneda"
             [requerido]="true"
-            ayuda="El backend solo acepta PEN."
+            ayuda="Solo se acepta PEN."
           >
             <select class="fg-select" formControlName="moneda">
               <option value="PEN">PEN</option>
@@ -109,7 +105,7 @@ import { Columna, FgTable } from '../../shared/ui/table';
       <fg-confirm
         titulo="Eliminar banco"
         [mensaje]="'Se eliminara ' + banco.nombre + '.'"
-        nota="Si tiene recibos de canje asociados, el backend rechazara la operacion."
+        nota="Si tiene recibos de canje asociados, no se podra eliminar."
         textoConfirmar="Eliminar"
         [peligroso]="true"
         (cancelar)="porEliminar.set(null)"

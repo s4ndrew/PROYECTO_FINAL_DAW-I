@@ -9,7 +9,6 @@ import { FgPageHeader } from '../../shared/ui/page-header';
 import { FechaPipe } from '../../shared/ui/pipes';
 import { Columna, FgTable } from '../../shared/ui/table';
 
-/** Detalle del puesto: deuda (RF-19) e historial de recibos (RF-26). */
 @Component({
   selector: 'fg-puesto-detalle',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -26,11 +26,6 @@ export interface Columna<T> {
   align?: 'left' | 'right';
 }
 
-/**
- * Tabla generica. El backend no pagina ni ordena (todos los endpoints devuelven
- * la lista completa), asi que la busqueda, el orden y la paginacion son en cliente.
- * Las acciones por fila se proyectan con <ng-template #acciones let-fila>.
- */
 @Component({
   selector: 'fg-table',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -211,7 +206,6 @@ export class FgTable<T> {
   private readonly seleccion = signal<T[]>([]);
 
   constructor() {
-    // Al recargar los datos se reinician pagina y seleccion.
     effect(() => {
       this.filas();
       this.paginaActual.set(1);

@@ -9,10 +9,6 @@ import { hoyIso } from '../../core/util/formato';
 import { FgPageHeader } from '../../shared/ui/page-header';
 import { MonedaPipe } from '../../shared/ui/pipes';
 
-/**
- * Resumen del dia. No hay endpoint de KPIs en el backend: los cuatro numeros se
- * derivan en cliente de /cuentas-cobrar y /recibos/ingresos?fecha=hoy.
- */
 @Component({
   selector: 'fg-inicio',
   changeDetection: ChangeDetectionStrategy.OnPush,

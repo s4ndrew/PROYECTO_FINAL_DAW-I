@@ -12,7 +12,6 @@ import { FgModal } from '../../shared/ui/modal';
 import { FgPageHeader } from '../../shared/ui/page-header';
 import { Columna, FgTable } from '../../shared/ui/table';
 
-/** RF-03: solo ADMIN. El password se cifra con BCrypt en el backend y nunca vuelve en las respuestas. */
 @Component({
   selector: 'fg-usuarios',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -113,7 +112,7 @@ import { Columna, FgTable } from '../../shared/ui/table';
       <fg-confirm
         titulo="Eliminar usuario"
         [mensaje]="'Se eliminara la cuenta ' + usuario.usuario + '.'"
-        nota="Si el usuario tiene recibos o egresos asociados, el backend rechazara la operacion."
+        nota="Si el usuario tiene recibos o egresos asociados, no se podra eliminar."
         textoConfirmar="Eliminar"
         [peligroso]="true"
         (cancelar)="porEliminar.set(null)"
@@ -174,7 +173,6 @@ export class UsuariosPage {
       rol: usuario.rol,
       activo: usuario.activo ?? true
     });
-    // Al editar, el password es opcional: el backend conserva el hash existente.
     this.form.controls.password.setValidators([Validators.minLength(6)]);
     this.form.controls.password.updateValueAndValidity();
     this.mostrarForm.set(true);

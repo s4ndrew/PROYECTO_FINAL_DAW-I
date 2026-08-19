@@ -14,7 +14,6 @@ import { FgModal } from '../../shared/ui/modal';
 import { FgPageHeader } from '../../shared/ui/page-header';
 import { Columna, FgTable } from '../../shared/ui/table';
 
-/** RF-08 a RF-10: el giro es obligatorio, el socio es opcional. */
 @Component({
   selector: 'fg-puestos',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -129,7 +128,7 @@ import { Columna, FgTable } from '../../shared/ui/table';
       <fg-confirm
         titulo="Eliminar puesto"
         [mensaje]="'Se eliminara el puesto ' + puesto.numero + '.'"
-        nota="Si tiene cuentas o recibos asociados, el backend rechazara la operacion."
+        nota="Si tiene cuentas o recibos asociados, no se podra eliminar."
         textoConfirmar="Eliminar"
         [peligroso]="true"
         (cancelar)="porEliminar.set(null)"
@@ -254,7 +253,6 @@ export class PuestosPage {
     peticion.subscribe({
       next: (respuesta) => {
         this.guardando.set(false);
-        // El backend responde 200 con cuerpo vacio si el giro o el socio no existen.
         if (!respuesta) {
           this.toast.error('No se pudo guardar', 'Revisa que el giro y el socio existan.');
           return;
