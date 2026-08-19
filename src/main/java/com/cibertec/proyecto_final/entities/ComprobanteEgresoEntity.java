@@ -22,7 +22,7 @@ public class ComprobanteEgresoEntity {
     private String numero;
     private LocalDate fechaEmision;
     private BigDecimal monto;
-    private String estado;  // EMITIDO, PROCESADO, ANULADO
+    private String estado;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "egreso_id", nullable = false)

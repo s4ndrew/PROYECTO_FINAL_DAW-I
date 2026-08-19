@@ -23,6 +23,5 @@ public class ServicioEntity {
     private String destinoCargo;
     private String tipoCosto;
     private boolean estado;
-    // Solo se usa cuando tipoCosto = CONSUMO (RF-17): monto = consumo * costoUnitario.
     private BigDecimal costoUnitario;
 }

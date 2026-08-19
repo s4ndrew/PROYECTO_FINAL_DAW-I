@@ -20,10 +20,6 @@ public class Puesto {
     @Size(max = 20, message = "El número de puesto no puede superar los 20 caracteres")
     private String numero;
 
-    // Solo el id del socio/giro, no el objeto completo: así el frontend
-    // manda las referencias que el usuario elige en un <select>, igual
-    // que describe RF-10 ("seleccionar ambas referencias existentes").
-    // Sin @NotNull porque el socio es opcional ("cuando corresponda").
     @Positive(message = "El id del socio debe ser un valor positivo")
     private Long socioId;
 

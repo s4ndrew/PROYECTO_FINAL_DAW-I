@@ -42,7 +42,6 @@ public class ReporteService implements IReporteService {
         return generarExcelEgresos(egresos, "Reporte Egresos - " + categoria);
     }
 
-    // RF-32: movimientos diarios de recibos de ingreso.
     @Override
     public byte[] generarReporteRecibosPorFecha(LocalDate fecha) {
         LocalDateTime desde = fecha.atStartOfDay();
@@ -51,7 +50,6 @@ public class ReporteService implements IReporteService {
         return generarExcelRecibos(recibos, "Recibos del " + fecha);
     }
 
-    // RF-32: totales y movimientos del mes (ingresos + bancarios).
     @Override
     public byte[] generarReporteRecibosPorMes(int anio, int mes) {
         YearMonth ym = YearMonth.of(anio, mes);
@@ -66,7 +64,6 @@ public class ReporteService implements IReporteService {
         return generarExcelRecibos(todos, "Recibos " + ym);
     }
 
-    // RF-33: listado de socios.
     @Override
     public byte[] generarReporteSocios() {
         List<SocioEntity> socios = iSocioRepository.findAll();
@@ -93,7 +90,6 @@ public class ReporteService implements IReporteService {
         }
     }
 
-    // RF-33: "no socios" = ingresos externos (recibos sin socio ni puesto asociado, ver RF-25).
     @Override
     public byte[] generarReporteNoSocios() {
         List<ReciboEntity> recibos = iReciboRepository.findAll().stream()
@@ -122,7 +118,6 @@ public class ReporteService implements IReporteService {
         }
     }
 
-    // RF-33: listado del catálogo de bancos.
     @Override
     public byte[] generarReporteBancos() {
         List<BancoEntity> bancos = iBancoRepository.findAll();
@@ -146,8 +141,6 @@ public class ReporteService implements IReporteService {
             throw new RuntimeException("Error al generar el reporte de bancos: " + e.getMessage());
         }
     }
-
-    // ---------- helpers ----------
 
     private byte[] generarExcelEgresos(List<EgresoEntity> egresos, String nombreHoja) {
         try (Workbook workbook = new XSSFWorkbook()) {

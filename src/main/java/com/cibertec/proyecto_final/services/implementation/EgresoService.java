@@ -44,7 +44,6 @@ public class EgresoService implements IEgresoService {
     public Egreso registrarEgreso(Egreso egreso) {
         EgresoEntity entity = convertirAEntidad(egreso);
         EgresoEntity guardado = egresoRepository.save(entity);
-        // RNF-14: todo egreso registrado queda auditado.
         if (guardado.getUsuario() != null) {
             auditoriaService.registrar(guardado.getUsuario().getId(), "Egreso", guardado.getId(), "REGISTRO",
                     "Egreso de " + guardado.getTotal() + " a " + guardado.getProveedor());
@@ -67,7 +66,6 @@ public class EgresoService implements IEgresoService {
         egresoRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Egreso no encontrado con id: " + id));
         egresoRepository.deleteById(id);
-        // RNF-14: la eliminación de un egreso también debe quedar auditada.
         auditoriaService.registrar(usuarioId, "Egreso", id, "ANULACION", "Se eliminó el egreso " + id);
     }
 
@@ -86,8 +84,6 @@ public class EgresoService implements IEgresoService {
                 .map(entity -> convertirAModelo(entity))
                 .toList();
     }
-
-    // --- Métodos privados de conversión ---
 
     private Egreso convertirAModelo(EgresoEntity entity) {
         Egreso modelo = objectMapper.convertValue(entity, Egreso.class);

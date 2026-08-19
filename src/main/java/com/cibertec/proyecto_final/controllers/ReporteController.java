@@ -33,14 +33,12 @@ public class ReporteController {
         return descargar(archivo, "reporte_egresos_" + categoria + ".xlsx");
     }
 
-    // RF-32: movimientos diarios.
     @GetMapping("/recibos/diario")
     public ResponseEntity<byte[]> descargarReporteRecibosDiario(@RequestParam LocalDate fecha) {
         byte[] archivo = iReporteService.generarReporteRecibosPorFecha(fecha);
         return descargar(archivo, "reporte_recibos_" + fecha + ".xlsx");
     }
 
-    // RF-32: totales y movimientos mensuales.
     @GetMapping("/recibos/mensual")
     public ResponseEntity<byte[]> descargarReporteRecibosMensual(
             @RequestParam int anio,
@@ -49,21 +47,18 @@ public class ReporteController {
         return descargar(archivo, "reporte_recibos_" + anio + "-" + mes + ".xlsx");
     }
 
-    // RF-33
     @GetMapping("/socios")
     public ResponseEntity<byte[]> descargarReporteSocios() {
         byte[] archivo = iReporteService.generarReporteSocios();
         return descargar(archivo, "reporte_socios.xlsx");
     }
 
-    // RF-33: ingresos externos, no ligados a un socio (ver RF-25).
     @GetMapping("/no-socios")
     public ResponseEntity<byte[]> descargarReporteNoSocios() {
         byte[] archivo = iReporteService.generarReporteNoSocios();
         return descargar(archivo, "reporte_no_socios.xlsx");
     }
 
-    // RF-33
     @GetMapping("/bancos")
     public ResponseEntity<byte[]> descargarReporteBancos() {
         byte[] archivo = iReporteService.generarReporteBancos();

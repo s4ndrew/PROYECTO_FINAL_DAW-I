@@ -32,7 +32,6 @@ public class PuestoController {
         return ResponseEntity.ok(puesto);
     }
 
-    // RNF-07: búsqueda por número de puesto para listas extensas.
     @GetMapping("/buscar")
     public ResponseEntity<List<Puesto>> buscarPuestos(@RequestParam String numero) {
         return ResponseEntity.ok(iPuestoService.buscar(numero));
@@ -43,7 +42,6 @@ public class PuestoController {
     public ResponseEntity<Puesto> crearPuesto(@RequestBody @Valid Puesto puesto) {
         Puesto creado = iPuestoService.crearPuesto(puesto);
         if (creado == null) {
-            // giroId o socioId no corresponden a un registro existente.
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok(creado);

@@ -1,0 +1,9 @@
+<!-- Placeholder generico para ilustraciones que aun no existen. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 160" width="240" height="160" role="img" aria-label="Imagen pendiente">
+  <rect width="240" height="160" rx="12" fill="#f3f5f7" stroke="#d9dee3" stroke-dasharray="6 6" />
+  <circle cx="120" cy="66" r="26" fill="#dceaf6" />
+  <path d="M104 66a16 16 0 0 1 32 0v22h-32z" fill="#2e75b6" opacity=".55" />
+  <text x="120" y="124" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#86909a">
+    Imagen pendiente
+  </text>
+</svg>

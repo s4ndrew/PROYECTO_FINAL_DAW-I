@@ -16,19 +16,6 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * RNF-01: autentica cada request revisando "Authorization: Bearer <token>".
- * Si el token es válido, deja al usuario autenticado en el SecurityContext
- * para el resto del filtro de Spring Security; si no hay token o es
- * inválido, simplemente sigue sin autenticar (WebSecurityConfig es quien
- * decide si esa ruta exige estar autenticado).
- *
- * OJO: a propósito NO lleva @Component. Si lo tuviera, Spring Boot lo
- * registraría automáticamente como filtro de servlet (corriendo una vez
- * ahí) Y nosotros lo volveríamos a registrar a mano en el
- * SecurityFilterChain, ejecutándolo dos veces por request. Por eso se
- * instancia directo en WebSecurityConfig.
- */
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
 
@@ -45,7 +32,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             if (jwtService.esTokenValido(token)) {
                 String usuario = jwtService.extraerUsuario(token);
                 String rol = jwtService.extraerRol(token);
-                // RNF-02: Se mapea "ADMIN" a "ROLE_ADMIN" para compatibilidad con hasRole()
                 List<GrantedAuthority> authorities = rol != null
                         ? List.of(new SimpleGrantedAuthority("ROLE_" + rol))
                         : Collections.emptyList();

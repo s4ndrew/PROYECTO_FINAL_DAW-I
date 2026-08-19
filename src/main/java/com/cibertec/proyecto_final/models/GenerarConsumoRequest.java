@@ -7,7 +7,6 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
-// RF-17 / RN-05: generar una cuenta por cobrar de un servicio de costo CONSUMO a partir de lecturas.
 @Getter
 @Setter
 @NoArgsConstructor

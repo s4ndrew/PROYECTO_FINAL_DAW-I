@@ -17,16 +17,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
-/**
- * RF-01/RF-02/RF-04, RNF-01 a RNF-03: exige "Authorization: Bearer <token>"
- * en todas las rutas, salvo el login (POST /usuarios/login, único permitAll).
- * El password se cifra con BCryptPasswordEncoder (bean expuesto acá, ver
- * guía de estilo 3.8).
- *
- * RNF-02: @EnableMethodSecurity habilita @PreAuthorize en los controladores,
- * que es donde se restringe cada endpoint por rol (ADMIN/OPERADOR) según el
- * actor responsable descrito en las especificaciones.
- */
 @Configuration
 @EnableMethodSecurity
 @RequiredArgsConstructor
@@ -53,7 +43,6 @@ public class WebSecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/usuarios/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/usuarios/**").hasRole("ADMIN")
                         
-                        //.requestMatchers(HttpMethod.GET, "/usuarios/login").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(new JwtAuthFilter(jwtService), UsernamePasswordAuthenticationFilter.class);
         return http.build();

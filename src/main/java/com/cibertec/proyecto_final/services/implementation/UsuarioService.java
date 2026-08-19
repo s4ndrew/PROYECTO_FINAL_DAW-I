@@ -44,7 +44,6 @@ public class UsuarioService implements IUsuarioService {
         }
         UsuarioEntity usuarioEntity = objectMapper.convertValue(usuario, UsuarioEntity.class);
         usuarioEntity.setId(null);
-        // RF: password cifrado con BCryptPasswordEncoder, nunca en texto plano.
         usuarioEntity.setPassword(passwordEncoder.encode(usuario.getPassword()));
         return convertirOcultandoPassword(iUsuarioRepository.save(usuarioEntity));
     }
@@ -56,7 +55,6 @@ public class UsuarioService implements IUsuarioService {
 
         UsuarioEntity actualizado = objectMapper.convertValue(usuario, UsuarioEntity.class);
         actualizado.setId(id);
-        // Si no mandan password nuevo, se conserva el hash que ya existía.
         if (usuario.getPassword() == null || usuario.getPassword().isBlank()) {
             actualizado.setPassword(existente.getPassword());
         } else {
@@ -81,7 +79,6 @@ public class UsuarioService implements IUsuarioService {
         if (!usuario.isActivo()) {
             throw new CredencialesInvalidasException("El usuario está inactivo");
         }
-        // Nunca se compara texto plano contra texto plano: matches() valida contra el hash guardado.
         if (!passwordEncoder.matches(request.getPassword(), usuario.getPassword())) {
             throw new CredencialesInvalidasException("Usuario o password incorrectos");
         }

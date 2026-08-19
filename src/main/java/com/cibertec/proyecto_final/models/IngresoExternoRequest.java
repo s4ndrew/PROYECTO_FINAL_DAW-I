@@ -7,7 +7,6 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
-// RF-25: ingreso que no está ligado a un socio ni a un puesto (donaciones, aportes de terceros, etc.).
 @Getter
 @Setter
 @NoArgsConstructor

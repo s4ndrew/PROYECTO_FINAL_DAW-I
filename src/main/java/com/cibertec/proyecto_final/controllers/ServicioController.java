@@ -18,7 +18,6 @@ public class ServicioController {
 
     private final IServicioService iServicioService;
 
-    // RF-13
     @GetMapping
     public ResponseEntity<List<Servicio>> listarTodos() {
         return ResponseEntity.ok(iServicioService.listarTodos());
@@ -36,7 +35,6 @@ public class ServicioController {
         return ResponseEntity.ok(iServicioService.listarActivos());
     }
 
-    // RF-13 / RF-14 / RF-15 — gestión de catálogos: solo Administrador (RNF-02).
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Servicio> guardar(@RequestBody @Valid Servicio servicio) {

@@ -11,7 +11,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-// RNF-09: índice para acelerar la búsqueda por texto (RNF-07) sobre una lista extensa de socios.
 @Table(name = "socios", indexes = {
         @Index(name = "idx_socios_nombre_apellidos", columnList = "nombre, apellidos")
 })

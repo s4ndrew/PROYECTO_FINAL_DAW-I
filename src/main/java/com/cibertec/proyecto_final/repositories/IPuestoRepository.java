@@ -9,6 +9,5 @@ import java.util.List;
 @Repository
 public interface IPuestoRepository extends JpaRepository<PuestoEntity, Long> {
 
-    // RNF-07: búsqueda por número de puesto para listas extensas.
     List<PuestoEntity> findByNumeroContainingIgnoreCase(String numero);
 }

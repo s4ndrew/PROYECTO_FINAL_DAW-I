@@ -32,7 +32,6 @@ public class CuentaCobrarController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // RF-19
     @GetMapping("/socio/{socioId}")
     public ResponseEntity<List<CuentaCobrar>> listarPorSocio(@PathVariable Long socioId) {
         return ResponseEntity.ok(iCuentaCobrarService.listarPorSocio(socioId));
@@ -43,25 +42,21 @@ public class CuentaCobrarController {
         return ResponseEntity.ok(iCuentaCobrarService.listarPorPuesto(puestoId));
     }
 
-    // RF-16
     @PostMapping("/generar/puestos")
     public ResponseEntity<List<CuentaCobrar>> generarParaPuestos(@RequestBody @Valid GenerarCuentasPuestoRequest request) {
         return ResponseEntity.ok(iCuentaCobrarService.generarParaPuestos(request));
     }
 
-    // RF-17
     @PostMapping("/generar/consumo")
     public ResponseEntity<CuentaCobrar> generarPorConsumo(@RequestBody @Valid GenerarConsumoRequest request) {
         return ResponseEntity.ok(iCuentaCobrarService.generarPorConsumo(request));
     }
 
-    // RF-18
     @PostMapping("/generar/socios")
     public ResponseEntity<List<CuentaCobrar>> generarParaSocios(@RequestBody @Valid GenerarSociosRequest request) {
         return ResponseEntity.ok(iCuentaCobrarService.generarParaSocios(request));
     }
 
-    // RF-21
     @PatchMapping("/{id}/abonar")
     public ResponseEntity<CuentaCobrar> marcarAbonada(@PathVariable Long id) {
         return ResponseEntity.ok(iCuentaCobrarService.marcarAbonada(id));
@@ -72,7 +67,6 @@ public class CuentaCobrarController {
         return ResponseEntity.ok(iCuentaCobrarService.marcarExonerada(id));
     }
 
-    // RNF-14: se pide el usuario que anula para dejar constancia en la auditoría.
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> anular(@PathVariable Long id, @RequestParam Long usuarioId) {
         iCuentaCobrarService.anularCuenta(id, usuarioId);

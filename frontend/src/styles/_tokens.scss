@@ -1,0 +1,87 @@
+/* Design tokens — Fantasmas Gestion (ver DesignSistem.md) */
+:root {
+  /* Marca */
+  --fg-brand-900: #092c50;
+  --fg-brand-800: #103b66;
+  --fg-brand-700: #19568b;
+  --fg-brand-500: #2e75b6;
+  --fg-brand-100: #dceaf6;
+  --fg-brand-50: #f2f7fb;
+
+  /* Fantasma */
+  --fg-ghost-50: #faf8f4;
+
+  /* Neutrales */
+  --fg-neutral-900: #18212b;
+  --fg-neutral-800: #28333e;
+  --fg-neutral-700: #46515d;
+  --fg-neutral-600: #66717d;
+  --fg-neutral-500: #86909a;
+  --fg-neutral-400: #b8c0c7;
+  --fg-neutral-300: #d9dee3;
+  --fg-neutral-200: #e8ebee;
+  --fg-neutral-100: #f3f5f7;
+  --fg-neutral-50: #f8f9fa;
+  --fg-white: #ffffff;
+
+  /* Semanticos */
+  --fg-success: #27865a;
+  --fg-success-bg: #e6f2ec;
+  --fg-warning: #d99a2b;
+  --fg-warning-bg: #fbf3e3;
+  --fg-danger: #c84949;
+  --fg-danger-bg: #f8e9e9;
+  --fg-info: #3478b9;
+  --fg-info-bg: #e6eff8;
+
+  /* Superficies */
+  --fg-bg-app: #f3f5f7;
+  --fg-bg-card: #ffffff;
+  --fg-text-primary: #18212b;
+  --fg-text-secondary: #66717d;
+  --fg-text-muted: #86909a;
+  --fg-border-default: #d9dee3;
+  --fg-border-soft: #e8ebee;
+
+  /* Tipografia */
+  --fg-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Espaciado (base 4px) */
+  --fg-space-1: 4px;
+  --fg-space-2: 8px;
+  --fg-space-3: 12px;
+  --fg-space-4: 16px;
+  --fg-space-5: 20px;
+  --fg-space-6: 24px;
+  --fg-space-8: 32px;
+  --fg-space-10: 40px;
+  --fg-space-12: 48px;
+  --fg-space-16: 64px;
+
+  /* Radios */
+  --fg-radius-xs: 4px;
+  --fg-radius-sm: 8px;
+  --fg-radius-md: 12px;
+  --fg-radius-lg: 16px;
+  --fg-radius-xl: 24px;
+  --fg-radius-pill: 999px;
+
+  /* Sombras */
+  --fg-shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.04);
+  --fg-shadow-sm: 0 2px 8px rgba(16, 24, 40, 0.06);
+  --fg-shadow-md: 0 8px 24px rgba(16, 24, 40, 0.08);
+  --fg-shadow-modal: 0 20px 48px rgba(16, 24, 40, 0.16);
+
+  /* Motion */
+  --fg-motion-fast: 120ms;
+  --fg-motion-normal: 180ms;
+  --fg-motion-slow: 240ms;
+
+  /* Z-index */
+  --fg-z-dropdown: 100;
+  --fg-z-sticky: 200;
+  --fg-z-sidebar: 300;
+  --fg-z-overlay: 800;
+  --fg-z-modal: 900;
+  --fg-z-toast: 1000;
+}

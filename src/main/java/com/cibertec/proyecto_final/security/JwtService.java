@@ -9,11 +9,6 @@ import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import java.util.Date;
 
-/**
- * Genera y valida los tokens JWT del login (RF-01 a RF-04).
- * Adaptación del esqueleto de "semana5" del profesor: se mantiene la misma
- * idea (Jwts.builder()/Jwts.parser()) pero con la API de jjwt 0.12.x.
- */
 @Component
 public class JwtService {
 
@@ -44,7 +39,6 @@ public class JwtService {
         return parseClaims(token).getSubject();
     }
 
-    // RNF-02: el rol viaja en el propio token para no tener que ir a BD en cada request.
     public String extraerRol(String token) {
         return parseClaims(token).get("rol", String.class);
     }

@@ -15,7 +15,6 @@ public interface IEgresoService {
 
     Egreso actualizarEgreso(Long id, Egreso egreso);
 
-    // RNF-14: se pide el usuario que elimina para dejar constancia en la auditoría.
     void eliminarEgreso(Long id, Long usuarioId);
 
     List<Egreso> listarEgresosPorFecha(LocalDate fechaInicio, LocalDate fechaFin);

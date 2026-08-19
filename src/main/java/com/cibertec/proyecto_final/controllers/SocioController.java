@@ -32,7 +32,6 @@ public class SocioController {
         return ResponseEntity.ok(socio);
     }
 
-    // RNF-07: búsqueda por código, nombre o apellidos para listas extensas.
     @GetMapping("/buscar")
     public ResponseEntity<List<Socio>> buscarSocios(@RequestParam String texto) {
         return ResponseEntity.ok(iSocioService.buscar(texto));

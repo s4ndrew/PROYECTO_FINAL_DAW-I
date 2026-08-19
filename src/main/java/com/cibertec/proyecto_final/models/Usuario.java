@@ -17,8 +17,6 @@ public class Usuario {
     @Size(min = 3, max = 50, message = "El usuario debe tener entre 3 y 50 caracteres")
     private String usuario;
 
-    // Sin @NotBlank: obligatorio al crear (lo valida el service), opcional al editar
-    // (si no se manda, se conserva el hash existente).
     @Size(min = 6, message = "El password debe tener al menos 6 caracteres")
     private String password;
 

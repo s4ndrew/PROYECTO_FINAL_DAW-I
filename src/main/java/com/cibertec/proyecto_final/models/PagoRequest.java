@@ -6,7 +6,6 @@ import lombok.*;
 
 import java.util.List;
 
-// RF-21 a RF-23: procesar el pago de una o varias cuentas por cobrar.
 @Getter
 @Setter
 @NoArgsConstructor

@@ -21,7 +21,6 @@ public class Recibo {
     @Pattern(regexp = "^(INGRESO|BANCO)$", message = "El tipo debe ser INGRESO o BANCO")
     private String tipo;
 
-    // Lo asigna el sistema (correlativo), no lo envía el cliente
     private Long correlativo;
 
     private LocalDateTime fecha;
