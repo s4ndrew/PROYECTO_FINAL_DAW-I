@@ -5,26 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e840d8ad-fe8c-4d75-abaf-b4bccfc37c63" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/AuditoriaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/AuditoriaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/BancoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/BancoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/ComprobanteEgresoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/ComprobanteEgresoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/CuentaCobrarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/CuentaCobrarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/EgresoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/EgresoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/GiroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/GiroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/PuestoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/PuestoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/ReciboController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/ReciboController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/ReporteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/ReporteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/ServicioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/ServicioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/SocioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/SocioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/services/IAuditoriaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cibertec/proyecto_final/services/IAuditoriaService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClaudeCodeSessionHistory">
+    <option name="openJson" value="[&quot;629901c4-2c0a-4d35-bc20-af2961476057&quot;]" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -65,17 +55,22 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ProyectoFinalApplication.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/andrewchiroque/Documents/IntelliJ_IDEA/clases_cibertec/5to_ciclo/PROYECTO_FINAL_DAW-I&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ProyectoFinalApplication.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/CIBERTEC/QUINTO CICLO/DESARROLLO DE APLICACIONES WEB I/PROYECT FINAL SPRING/PROYECTO_FINAL_DAW-I/PROYECTO_FINAL_DAW-I",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="ProyectoFinalApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.cibertec.proyecto_final.ProyectoFinalApplication" />
